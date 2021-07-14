@@ -4,8 +4,10 @@
 namespace App\Controller;
 
 
+use App\Form\RecipesForm;
 use App\Model\Document\RecipesDocument;
 use App\Model\DocumentLocator;
+use Cake\ORM\Entity;
 
 class RecipesController extends AppController
 {
@@ -48,4 +50,28 @@ class RecipesController extends AppController
 
         $this->set(compact('recipe'));
     }
+
+    /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     */
+    public function add()
+    {
+        $form = new RecipesForm();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            if ($form->execute($data)) {
+                $data['ingredients'] = explode(',', $data['ingredients']);
+                $this->Recipes->save(new Entity($data));
+                $this->Flash->success(__('The recipe has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The recipe could not be saved. Please, try again.'));
+        }
+        $this->viewBuilder()->setTemplate('form');
+        $this->set(compact('form'));
+    }
+
 }

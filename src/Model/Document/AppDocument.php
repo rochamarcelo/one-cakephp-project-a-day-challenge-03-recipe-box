@@ -5,6 +5,7 @@ namespace App\Model\Document;
 
 
 use App\CouchDB\ClientFactory;
+use Cake\ORM\Entity;
 use PHPOnCouch\CouchClient;
 
 class AppDocument
@@ -52,5 +53,13 @@ class AppDocument
     public function get($id)
     {
         return $this->getClient()->getDoc($id);
+    }
+
+    /**
+     * @param object $document
+     */
+    public function save($document)
+    {
+        $this->getClient()->storeDoc($document);
     }
 }
