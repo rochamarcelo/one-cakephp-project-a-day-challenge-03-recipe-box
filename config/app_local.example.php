@@ -91,4 +91,9 @@ return [
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
     ],
+    'CouchDB' => [
+        'default' => [
+            'url' => env('COUCH_DB_DEFAULT_URL', null),
+        ],
+    ],
 ];
