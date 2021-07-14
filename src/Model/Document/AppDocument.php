@@ -24,6 +24,7 @@ class AppDocument
     }
 
     /**
+     * Get all records
      *
      * @param bool $simplified
      * @return object[]
@@ -41,5 +42,15 @@ class AppDocument
         return array_map(function($row) {
             return $row->doc;
         }, $rows);
+    }
+
+    /**
+     * Get one record.
+     *
+     * @param string $id
+     */
+    public function get($id)
+    {
+        return $this->getClient()->getDoc($id);
     }
 }

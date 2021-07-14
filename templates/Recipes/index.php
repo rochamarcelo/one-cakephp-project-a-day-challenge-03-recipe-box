@@ -12,6 +12,7 @@
                     __('Tell me how'),
                     [
                         'action' => 'view',
+                        $recipe->_id,
                     ],
                     ['class' => 'btn btn-primary']
                 )?>
