@@ -6,8 +6,6 @@ namespace App\Controller;
 
 use App\Form\RecipesForm;
 use App\Model\Document\RecipesDocument;
-use App\Model\DocumentLocator;
-use Cake\Form\Form;
 use Cake\ORM\Entity;
 
 class RecipesController extends AppController
